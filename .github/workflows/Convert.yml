@@ -19,7 +19,7 @@ jobs:
          git config --local user.email "actions@github.com"
          git config --local user.name "GitHub Actions"
     - name: 启动subconverter
-      run: 
+      run: |
           chmod a+x ./subconverter/subconverter
           cd ./subconverter 
            ./subconverter -g 
