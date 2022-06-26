@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - 'url'
+      
   workflow_dispatch:
 
 jobs:
