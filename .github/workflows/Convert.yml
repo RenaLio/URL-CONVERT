@@ -1,0 +1,27 @@
+name: Convert
+on: 
+  push:
+    paths:
+      - 'url'
+  workflow_dispatch:
+
+jobs:
+  my-job:
+    name: Encode
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: 设置时区
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
+    - name: 配置git
+      run: |                 
+         git config --local user.email "actions@github.com"
+         git config --local user.name "GitHub Actions"
+    - name: 启动subconverter
+      run: ./subconverter/subconverter -g 
+    - name: 移动提交
+      run:
+            mv ./subconverter/long ./long || true
+            mv ./subconverter/Clash.yaml ./Clash.yaml || true
+    - name: 提交更改
+      run: ./.github/update-repo.sh || true
