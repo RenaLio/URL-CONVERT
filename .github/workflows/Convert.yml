@@ -18,7 +18,9 @@ jobs:
          git config --local user.email "actions@github.com"
          git config --local user.name "GitHub Actions"
     - name: 启动subconverter
-      run: ./subconverter/subconverter -g 
+      run: 
+          chmod +x ./subconverter/subconverter
+          ./subconverter/subconverter -g 
     - name: 移动提交
       run:
             mv ./subconverter/long ./long || true
