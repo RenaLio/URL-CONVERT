@@ -20,6 +20,7 @@ jobs:
          git config --local user.name "GitHub Actions"
     - name: 启动subconverter
       run: 
+          chmod a+x ./subconverter/subconverter
           cd ./subconverter && ./subconverter -g 
     - name: 移动提交
       run:
